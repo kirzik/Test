@@ -3,9 +3,17 @@
     <select name="em" id="em">
         <option *ngFor="let em of selectAr" value="em">{{em.id}}. {{em.name}}</option>
     </select>
-    <button><img src="../../assets/button/left.jpg" alt="left"></button>
+    <button class="btn"><img class="img" src="../../assets/button/left.jpg" alt="left"></button>
     <input type="date" step="1" value="{{dateNow}}">
-    <button><img src="../../assets/button/right.jpg" alt="right"> - </button>
+    <button class="btn"><img class="img" src="../../assets/button/right.jpg" alt="right"></button>
 </div>
+<table>
+    <tr>
+        <th>A+</th>
+        <th>A-</th>
+        <th>R+</th>
+        <th>R-</th>
+    </tr>
+</table>
 
 

@@ -12,7 +12,11 @@ export class TableComponent implements OnInit {
   selectAr = [
     {
       id: 1,
-      name: "ПУ 1"
+      name: "ПУ 1",
+      A1: new Array(48),
+      A2: new Array(48),
+      R1: new Array(48),
+      R2: new Array(48)
     },
     {
       id:2,
@@ -28,6 +32,7 @@ export class TableComponent implements OnInit {
     },
   ];
 
+  
   dateNow = new Date().toISOString().substring(0, 10);
 
   ngOnInit(): void {
