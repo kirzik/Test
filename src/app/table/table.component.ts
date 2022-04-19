@@ -1,13 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskDataService } from '../shared/task-data.service';
+
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  providers: [TaskDataService]
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private getTaskDataService:TaskDataService
+  ) { }
+
+  d = new Date();
+  value = this.d.toISOString().substring(0, 10);
 
   selectAr = [
     {
@@ -32,11 +40,26 @@ export class TableComponent implements OnInit {
     },
   ];
 
+  arr = [
+    [1,2,3,4,5],
+    [1,2,3,4,5],
+    [1,2,3,4,5],
+    [1,2,3,4,5],
+    [1,2,3,4,5],
+    [1,2,3,4,5],
+  ]
   
-  dateNow = new Date().toISOString().substring(0, 10);
+  btn(val:number){
+    this.value =new Date(this.d.setDate(this.d.getDate() + val)).toISOString().substring(0, 10);
+  }
+
+  
+
+
 
   ngOnInit(): void {
-    console.log("Сегодня: " + this.dateNow)
+    console.log("Сегодня: " + this.value);
+    console.log(this.getTaskDataService.getData())
   }
 
 }

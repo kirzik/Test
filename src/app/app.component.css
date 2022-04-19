@@ -1,7 +1,7 @@
 .content{
     display: flex;
     justify-content: center;
-    border: 2px solid skyblue;
+    /* border: 2px solid wheat; */
     width: 800px;
     height: 800px;
     text-align: center;
