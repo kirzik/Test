@@ -15,7 +15,7 @@ export class TaskDataService {
 
 
   getSerialNumberList(){
-    return this.http.get(this.baseUrl);
+    return this.http.get<any>(this.baseUrl);
   }
   
  
