@@ -10,15 +10,15 @@ import { map } from 'rxjs/operators';
 export class TaskDataService {
 
   constructor(private http: HttpClient) { }
-  
-  
+   
+  baseUrl = "https://localhost:5001/meters";
+
 
   getSerialNumberList(){
     return this.http.get(this.baseUrl);
   }
   
-  baseUrl = "https://localhost:5001/meters";
-  
+ 
   getMeter(serialNumber: string){
     return this.http.get<any>(this.baseUrl + "/" + serialNumber);
   }

@@ -18,7 +18,7 @@
         <div class="cellHeader">Реактивная, прием, кВт</div>
         <div class="cellHeader">Реактивная, отдача, кВт</div>
     </div>
-    <div class="row" *ngFor="let row of update()|async">
+    <div class="row" *ngFor="let row of getData|async">
         <div class="cellFist"><p class="textCell">{{row.serialNumber}}</p></div>
         <div class="cell"><p class="textCell">{{row[1]}}</p></div>
         <div class="cell"><p class="textCell">{{row[2]}}</p></div>

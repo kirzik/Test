@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { Meter } from '../shared/meter';
 import { Observable } from 'rxjs';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-table',
@@ -14,7 +16,8 @@ import { Observable } from 'rxjs';
 export class TableComponent implements OnInit {
 
   constructor(
-    private getTaskDataService:TaskDataService
+    private getTaskDataService:TaskDataService,
+    private http: HttpClient
   ) { }
 
   selectAr = [
@@ -53,7 +56,10 @@ export class TableComponent implements OnInit {
   }
 
   meterS = "16603"
-
+  baseUrl = "https://localhost:5001/meters";
+  
+  getData = this.http.get<any>(this.baseUrl + "/" + this.meterS)
+  
   btnUpdate(){
     // this.getTaskDataService.getMeter(this.meterS).subscribe(x=> {console.log(x)});
     console.log(this.update());
