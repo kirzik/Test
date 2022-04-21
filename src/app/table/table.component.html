@@ -1,11 +1,12 @@
 <div></div>
 <div class="nav">
     <select name="em" id="em">
-        <option *ngFor="let em of selectAr" value="em">{{em.id}}. {{em.name}}</option>
+        <option *ngFor="let em of selectAr" value="em">{{em.name}}</option>
     </select>
     <button class="btn" (click)="btn(-1)"><img class="img" src="../../assets/button/left.jpg" alt="left"></button>
-    <input  type="date" step="1" [(ngModel)]="value" >
+    <input #inputDate type="date" step="1" [(ngModel)]="value" >
     <button class="btn" (click)="btn(1)"><img class="img" src="../../assets/button/right.jpg" alt="right"></button>
+    <button class="btn" (click)="btnUpdate()">Обновить</button>
 </div>
 <br>
 
@@ -17,8 +18,8 @@
         <div class="cellHeader">Реактивная, прием, кВт</div>
         <div class="cellHeader">Реактивная, отдача, кВт</div>
     </div>
-    <div class="row" *ngFor="let row of arr">
-        <div class="cellFist"><p class="textCell">{{row[0]}}</p></div>
+    <div class="row" *ngFor="let row of update()|async">
+        <div class="cellFist"><p class="textCell">{{row.serialNumber}}</p></div>
         <div class="cell"><p class="textCell">{{row[1]}}</p></div>
         <div class="cell"><p class="textCell">{{row[2]}}</p></div>
         <div class="cell"><p class="textCell">{{row[3]}}</p></div>

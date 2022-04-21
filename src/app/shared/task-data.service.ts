@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -8,11 +10,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class TaskDataService {
 
   constructor(private http: HttpClient) { }
+  
+  
 
-  getData(){
-    //return this.http.get('http://localhost:48998')
-    return this.http.get("http://localhost:5000/weatherforecast",{headers:new HttpHeaders("application/json; charset=utf-8; Access-Control-Allow-Origin")}).subscribe();
+  getSerialNumberList(){
+    return this.http.get(this.baseUrl);
   }
-
+  
+  baseUrl = "https://localhost:5001/meters";
+  
+  getMeter(serialNumber: string){
+    return this.http.get<any>(this.baseUrl + "/" + serialNumber);
+  }
 
 }
