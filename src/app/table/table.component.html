@@ -1,7 +1,7 @@
 <div></div>
 <div class="nav">
     <select name="em" id="em">
-        <option *ngFor="let em of data" value="em">{{em.Name}}</option>
+        <option *ngFor="let em of emList">{{em.name}}</option>
     </select>
     <button class="btn" (click)="btn(-1)"><img class="img" src="../../assets/button/left.jpg" alt="left"></button>
     <input #inputDate type="date" step="1" [(ngModel)]="valueDate" >
@@ -15,12 +15,19 @@
         <div class="cellHeader"></div>
         <div class="cellHeader">Активная, прием, кВт</div>
         <div class="cellHeader">Активная, отдача, кВт</div>
-        <div class="cellHeader">Реактивная, прием, кВт</div>
-        <div class="cellHeader">Реактивная, отдача, кВт</div>
+        <div class="cellHeader">Реактивная, прием, кВАр</div>
+        <div class="cellHeader">Реактивная, отдача, кВАр</div>
     </div>
-    <div class="row" *ngFor="let row of data">
-        <div class="cellFist"><p class="textCell">{{row.SerialNumber}}</p></div>
+    <div class="tableRow">
+        <div class="row" *ngFor="let row of data">
+            <div class="cellFist"><p class="textCell">{{row.dataTime}}</p></div>
+            <div class="cellFist"><p class="textCell">{{row.activePlus}}</p></div>
+            <div class="cellFist"><p class="textCell">{{row.activeMinus}}</p></div>
+            <div class="cellFist"><p class="textCell">{{row.rectivePlus}}</p></div>
+            <div class="cellFist"><p class="textCell">{{row.rectiveMinus}}</p></div>
+        </div>
     </div>
+    
 </div>
 
 

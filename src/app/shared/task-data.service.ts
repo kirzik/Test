@@ -14,13 +14,14 @@ export class TaskDataService {
   baseUrl = "https://localhost:5001/meters";
 
 
-  getSerialNumberList(){
+  //получить список всех ПУ
+  getEmList(){
     return this.http.get<any>(this.baseUrl);
   }
-  
- 
-  getMeter(serialNumber: string){
-    return this.http.get<any>(this.baseUrl + "/" + serialNumber);
+  // получить данные по ПУ
+  getData(serialNumber: string, dateTime:Date){
+    return this.http.get<any>(this.baseUrl + "/" + serialNumber + "/" + dateTime);
   }
+
 
 }
