@@ -14,30 +14,36 @@ export class TableComponent implements OnInit {
     private getTaskDataService:TaskDataService
   ) { }
 
-  dateNow = new Date();
-  valueDate = this.dateNow.toISOString().substring(0, 10);
+  valueDate!:any;
   data:any[] = [];
   emList:any[] = [];
-  serialNumber: string = "59366";
-  dateTime:Date= new Date(2022, 4, 11);
+ 
+  emValue: string | undefined;
+
+  valueSelect!: string;
+
+  onChangeDate(value:any){
+    console.log(value)
+    this.valueDate = value;
+  }
 
   btn(val:number){
-    this.valueDate = new Date(this.dateNow.setDate(this.dateNow.getDate() + val)).toISOString().substring(0, 10);
+    this.valueDate = new Date(new Date(this.valueDate).setDate(new Date(this.valueDate).getDate() + val)).toISOString().substring(0, 10);
   }
 
   btnUpdate(){
-    this.getTaskDataService.getData(this.serialNumber,this.dateTime).subscribe(x=> { this.data = x; console.log(typeof x, x) });
-
+    this.updateEm()
   }
 
-  update(){
-    this.getTaskDataService.getData(this.serialNumber,this.dateTime).subscribe(x=> { this.data = x; console.log(typeof x, x) });
-    this.getTaskDataService.getEmList().subscribe(x=> { this.emList = x});
+  updateEm(){
+    this.getTaskDataService.getData(this.valueSelect,this.valueDate).subscribe(x=> { this.data = x});
   }
 
   ngOnInit(): void {
     console.log("Сегодня: " + this.valueDate);
-    this.update();
+    
+    this.getTaskDataService.getEmList().subscribe(x=> { this.emList = x});
+    this.valueDate = new Date().toISOString().substring(0, 10);
   }
   
 }
