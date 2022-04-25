@@ -4,10 +4,10 @@
     <select name="em" id="em" [(ngModel)]="valueSelect">
         <option *ngFor="let em of emList" [value]="em.SerialNumber">{{em.Name}}</option>
     </select>
-    <button class="btn" (click)="btn(-1)"><img class="img" src="../../assets/button/left.jpg" alt="left"></button>
+    <button class="btn" (click)="btn(-1)"><img class="img" src="/assets/button/left.jpg" alt="left"></button>
     <input type="date" step="1" [(ngModel)]="valueDate" (ngModelChange)="onChangeDate(valueDate)">
-    <button class="btn" (click)="btn(1)"><img class="img" src="../../assets/button/right.jpg" alt="right"></button>
-    <button class="btn" (click)="btnUpdate()"><img class="img" src="../../assets/button/update.png" alt="update"></button>
+    <button class="btn" (click)="btn(1)"><img class="img" src="/assets/button/right.jpg" alt="right"></button>
+    <button class="btn" (click)="btnUpdate()"><img class="img" src="/assets/button/update.png" alt="update"></button>
 </div>
 <br>
 <div class="table" >
