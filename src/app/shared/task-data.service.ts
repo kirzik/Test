@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable()
@@ -11,7 +11,6 @@ export class TaskDataService {
    
   baseUrl = "https://localhost:5001/meters";
 
-
   //получить список всех ПУ
   getEmList(){
     return this.http.get<any>(this.baseUrl);
@@ -20,6 +19,5 @@ export class TaskDataService {
   getData(serialNumber: string, dateTime:string){
     return this.http.get<any>(this.baseUrl + "/" + serialNumber + "/" + dateTime);
   }
-
 
 }

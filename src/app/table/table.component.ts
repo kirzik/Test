@@ -17,13 +17,13 @@ export class TableComponent implements OnInit {
   valueDate!:any;
   data:any[] = [];
   emList:any[] = [];
- 
   emValue: string | undefined;
-
   valueSelect!: string;
+  coefficient = 1000; // кило*
+  selectedBool = false;
 
   onChangeDate(value:any){
-    console.log(value)
+    console.log(value);
     this.valueDate = value;
   }
 
@@ -32,7 +32,14 @@ export class TableComponent implements OnInit {
   }
 
   btnUpdate(){
-    this.updateEm()
+    this.updateEm();
+    if(this.valueSelect == undefined)
+    {
+      this.selectedBool = false;
+    }
+    else{
+      this.selectedBool = true;
+    }
   }
 
   updateEm(){
@@ -41,7 +48,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Сегодня: " + this.valueDate);
-    
     this.getTaskDataService.getEmList().subscribe(x=> { this.emList = x});
     this.valueDate = new Date().toISOString().substring(0, 10);
   }
